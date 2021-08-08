@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<script src="http://www.yydbxx.cn/res/jquery.min.js"></script>
+<script type="text/javascript">
+function se(){
+	var s=document.getElementById("eti").value;
+	if(s==''){
+	alert("不能为空");
+	returrn;	
+	}
+	
+	var sa=document.getElementById("ss").value;
+	if(sa=="0"){
+		window.location.href="./ri.php?ssid="+s;
+	}
+	if(sa=="1"){
+		window.location.href="./riauthor.php?ssid="+s;
+	}
+	if(sa=="2"){
+		window.location.href="./com.php?ssid="+s;
+	}
+if(sa=="3"){
+		window.location.href="./ritag.php?ssid="+s;
+	}
+}
+	
+	$(document).ready(function(){
+
+	$('#eti').bind('keydown',function(event){  
+        	        if(event.keyCode == "13")      
+        	        {  
+		se();
+		}
+});
+});
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>纯几何吧题目检索</title>
+<link rel="icon" href="favicon.ico" type="image/ico">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/materialdesignicons.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+<div align="center"> <h1>纯几何吧题目检索</h1></div>
+<div align="center" style="width:100%"><h4>更新于2020.7.25(v1.7)</h4>
+<div style="width:60%;float:left;">
+<input class="form-control" type="text" id="eti" name="example-text-input" placeholder="请输入搜索内容...">
+</div>
+<div style="width:30%;float:left;">
+<select class="form-control" id="ss" name="example-select" size="1">
+                        <option value="0">按题目搜索</option>
+                        <option value="1">按作者搜索</option>
+			<option value="2">按内容搜索</option>
+			<option value="3">按标签搜索</option>
+</select>
+</div>
+</div>
+</br></br>
+<div align="center">
+<button class="btn btn-default btn-w-md" type="button" onclick="se()">搜索</button>
+</div>
+</br>
+<p style="text-align:center">常用标签：<a href="tags/题面简单.html">题面简单</a> <a href="tags/我们爱几何.html">我们爱几何</a> <a href="tags/射影.html">射影</a> <a href="tags/单圆问题.html">单圆问题</a> (感谢djc提供的标签数据！)</p>
+<table class="table table-striped">
+<tr>
+<th>题目</th>
+<th>标签</th>
+<th>作者</th>
+<th>时间</th>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/4983984218">发几道上海气息浓厚的几何题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-02</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/4986093921">难题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-02</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/4986322819">不是很难的初中代数题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-02</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/4992885713">杂图荟萃</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-02</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5073653972">平面几何初中竞赛小题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-04</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5169129371">ee</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-06</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5229726417">神题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5246874891">324</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5251965359">相似中心模型</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5252910369">XX</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5255290497">中考与竞赛的衔接</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5257483667">神题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5260209238">平面几何：从中考到联赛2017版</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5265448378">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5268246512">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5270314876">DESAR</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5292589307">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5297928826">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5297982225">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-08</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5328190989">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-09</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5349011795">圆题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-09</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5356088778">先发着</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5356557657">都是些简单题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5358374826">主要与切线有关的几何题与解题方法</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5358418337">计算类几何题的纯几解</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5370830338">有点6的题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5384248087">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5388207267">万老师题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5395909634">新编两趣题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-10</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5411311533">自编题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5422173655">整理|学习笔记</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5426369226">习题解答</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5439552210">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5439772186">一个熟知结论</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5443120054">一道初联题引发的惨案</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5443368904">存题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5447226854">习题解答</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5453378371">习题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5455568513">简单题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5461486281">几道好题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-12</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5462454000">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-12</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5473711099">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2017-12</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5510302608">t</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5519318801">相切的圆</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5530711528">两道初联难度几何题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5889738110">三角形的一个几何性质研究说明</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-09</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5935276396">练习6</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5938054364">一个并查集和离散化问题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5946231393">该问题的升级问题：设C1B1交KL于X.求证X在三角形ABC</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5958764790">一道题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2018-11</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/5992537282">这是啥吧先拜吧</a></td>
+<td></td><td>><a href="writer/小学生duang.html">小学生duang</a></td>
+<td>2018-12</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6017463618">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6018443265">宣传一下C.M.Online</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6091359952">lym难题三连</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-04</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6093261882">平面几何-强计算恒等式收集</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-04</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6107452381">提高组爬虫</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-04</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6155818752">我发表了一篇图片贴，大伙来看看吧~</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-06</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6156134511">OAS</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-06</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6173814454">不等式趣题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-06</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6183828627">关于一道【小】题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6193880880">一个有用的结论，自行领悟它的作用</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6207793114">平面几何新思考【连载中】</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2019-07</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6448093983">有用的引理</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2020-01</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6750156558">求值域问题</a></td>
+<td></td><td>><a href="writer/King-99.html">King-99</a></td>
+<td>2020-06</td>
+</tr>
+<tr>
+<td><a href="http://tieba.baidu.com/p/6851567679">[公告]关于撤销 133_BA_99 吧主管理权限的说明</a></td>
+<td></td><td>><a href="writer/贴吧吧主小管家.html">贴吧吧主小管家</a></td>
+<td>2020-07</td>
+</tr>
+</table>
