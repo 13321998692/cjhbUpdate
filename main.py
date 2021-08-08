@@ -117,7 +117,7 @@ cookies = {
 ktmp = 1
 while (ktmp == 1):
     try:
-        file = requests.get("http://tieba.baidu.com/f?kw=许氏数学")
+        file = requests.get("http://tieba.baidu.com/f?kw=纯几何",headers=headers,cookies=cookies)
         data = file.content.decode(encoding="utf-8", errors="ignore")
         #print(data)
         ktmp = 0
@@ -140,7 +140,7 @@ while k<=maxpage:
 	ktmp=1
 	while (ktmp==1):
 		try:
-			file=requests.get("http://tieba.baidu.com/f?kw=许氏数学&ie=utf-8&pn="+str(k))
+			file=requests.get("http://tieba.baidu.com/f?kw=纯几何&ie=utf-8&pn="+str(k),headers=headers,cookies=cookies)
 			data=file.content.decode(encoding="utf-8", errors="ignore")
 			ktmp=0
 		except Exception as e:
@@ -152,17 +152,38 @@ while k<=maxpage:
 	bar.next()
 	k=k+50
 list=sorted(list, key=lambda i:int(i[0]))
+#判断新帖子
+
+
+
+
 fhandle=open('./pb.html','w',encoding='utf-8',errors='ignore')
 fhandle.write(swr)
+nhtml=requests.get("http://www.yydbxx.cn/t/pb.html").content.decode(encoding='utf-8',errors='ignore')
+
+reg=r'/p/(.*?)".*?</td>[\s\S]*?<td>(\|.*?)</td>'
+ia=re.compile(reg)
+taglist=re.findall(ia,nhtml)
+
 for x in list:
-	fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(x[1])+'</a></td>\n<td></td><td>><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
+	fres=nhtml.find(str(x[0]),0,len(nhtml))
+	if (fres!=-1):
+		#判断是否有tag
+		flag=0
+		thistag=''
+		for tag in taglist:
+			if tag[0]==str(x[0]):
+				flag=1
+				thistag=tag[1]
+				break
+		if flag==1:
+			#tag
+			fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(x[1])+'</a></td>\n<td>'+thistag+'</td><td><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
+			continue;
+	fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(x[1])+'</a></td>\n<td></td><td><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
 fhandle.write('</table>')
 fhandle.close()
 bar.finish
-'''
-<tr>
-<td><a href="http://tieba.baidu.com/p/6835689892">4478重发</a></td>
-<td></td><td><a href="writer/◆qzc◆.html">◆qzc◆</a></td>
-<td>7-24</td>
-</tr>
-'''
+
+
+
