@@ -1,0 +1,5 @@
+纯几何吧更新流程：
+main.py			获取所有帖子，生成pb.html
+downpage.py 	下载新帖子，生成writer
+
+上传pb.html,downloadserver,writer,userinfo

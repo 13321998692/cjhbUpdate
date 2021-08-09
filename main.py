@@ -42,6 +42,56 @@ if(sa=="3"){
 });
 });
 </script>
+<style>
+    .container {
+      height: 100%;
+      width: 100%;
+      align-items: center;
+    }
+
+    .bgDiv {
+      box-sizing: border-box;
+      width: 60%;
+      position: relative;
+      float: left;
+    }
+
+    .search-input-text {
+      border: 1px solid #b6b6b6;
+      width: 100%;
+      background: #fff;
+      height: 33px;
+      line-height: 33px;
+      font-size: 18px;
+      padding: 3px 0 0 7px;
+    }
+
+    .suggest {
+        width: 100%;
+      position: absolute;
+      top: 38px;
+      border: 1px solid #999;
+      background: #fff;
+      display: none;
+    }
+
+    .suggest ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .suggest ul li {
+      padding: 3px;
+      font-size: 17px;
+      line-height: 25px;
+      cursor: pointer;
+    }
+
+    .suggest ul li:hover {
+      background-color: #b6b6b6;
+    }
+  </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>纯几何吧题目检索</title>
@@ -51,18 +101,186 @@ if(sa=="3"){
 <link href="css/style.min.css" rel="stylesheet">
 <div align="center"> <h1>纯几何吧题目检索</h1></div>
 <div align="center" style="width:100%"><h4>更新于2021.8.8(v1.8)</h4>
-<div style="width:60%;float:left;">
-<input class="form-control" type="text" id="eti" name="example-text-input" placeholder="请输入搜索内容...">
+<div class="container">
+    <div class="bgDiv">
+        <input class="form-control search-input-text" type="text" id="eti" name="example-text-input" placeholder="请输入搜索内容...">
+        <div class="suggest">
+            <ul id="search-result">
+            </ul>
+        </div>
+    </div>
+    <div style="width:30%;float:right;">
+        <select class="form-control" id="ss" name="example-select" size="1">
+                                <option value="0">按题目搜索</option>
+                                <option value="1">按作者搜索</option>
+                    <option value="2">按内容搜索</option>
+                    <option value="3">按标签搜索</option>
+        </select>
+        </div>
 </div>
-<div style="width:30%;float:left;">
-<select class="form-control" id="ss" name="example-select" size="1">
-                        <option value="0">按题目搜索</option>
-                        <option value="1">按作者搜索</option>
-            <option value="2">按内容搜索</option>
-            <option value="3">按标签搜索</option>
-</select>
+
+
 </div>
-</div>
+<script>
+    var suggestContainer = document.getElementsByClassName("suggest")[0];
+    var searchInput = document.getElementsByClassName("search-input-text")[0];
+    var bgDiv = document.getElementsByClassName("bgDiv")[0];
+    var searchResult = document.getElementById("search-result");
+    var sa=document.getElementById("ss").value;
+    var currentlink="";
+    // 清除建议框内容
+    function clearC(){
+        suggestContainer.style.display = "none";
+        clearContent;
+    }
+
+    function clearContent() {
+      var size = searchResult.childNodes.length;
+      for (var i = size - 1; i >= 0; i--) {
+        searchResult.removeChild(searchResult.childNodes[i]);
+      }
+    };
+
+    var timer = null;
+    // 注册输入框键盘抬起事件
+    searchInput.onkeyup = function (e) {
+        sa=document.getElementById("ss").value;
+        if(sa!=0 && sa!=1){
+            return;
+        }
+        if(sa==1){
+            //作者
+            suggestContainer.style.display = "block";
+            // 如果输入框内容为空 清除内容且无需跨域请求
+            if (this.value.length === 0) {
+                suggestContainer.style.display = "none";
+                clearContent();
+                return;
+            }
+            if (this.timer) {
+                clearTimeout(this.timer);
+            }
+            if (e.keyCode !== 40 && e.keyCode !== 38 && e.keyCode !== 37 && e.keyCode !== 39) {
+                // 函数节流优化
+                this.timer = setTimeout(() => {
+                // 创建script标签JSONP跨域
+                var script = document.createElement("script");
+                script.src = "http://www.yydbxx.cn/t/sriauthor.php?ssid=" + encodeURI(this.value.trim());
+                document.body.appendChild(script);
+                }, 130)
+            }
+            return;
+        }
+      suggestContainer.style.display = "block";
+      // 如果输入框内容为空 清除内容且无需跨域请求
+      if (this.value.length === 0) {
+        suggestContainer.style.display = "none";
+        clearContent();
+        return;
+      }
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      if (e.keyCode !== 40 && e.keyCode !== 38 && e.keyCode !== 37 && e.keyCode !== 39) {
+        // 函数节流优化
+        this.timer = setTimeout(() => {
+          // 创建script标签JSONP跨域
+          var script = document.createElement("script");
+          script.src = "http://www.yydbxx.cn/t/sri.php?ssid=" + encodeURI(this.value.trim());
+          document.body.appendChild(script);
+        }, 130)
+      }
+
+    };
+
+    // 回调函数处理返回值
+    function handleSuggestion(res) {
+    //console.log(res);
+      // 清空之前的数据！！
+      clearContent();
+      var result = res.s;
+      var myhtml=res.h;
+      // 截取前五个搜索建议项
+      if (result.length > 5) {
+        result = result.slice(0, 6)
+      }
+      for (let i = 0; i < result.length; i++) {
+        // 动态创建li标签
+        var liObj = document.createElement("li");
+        liObj.innerHTML = result[i];
+        liObj.id=myhtml[i];
+        searchResult.appendChild(liObj);
+      }
+    }
+
+
+    function jumpPage() {
+        sa=document.getElementById("ss").value;
+        if(sa==1){
+            //author
+            window.open(`http://www.yydbxx.cn/t/writer/${encodeURI(currentlink+".html")}`);
+            return;
+        }
+      window.open(`http://www.tieba.com/p/${encodeURI(currentlink)}`);
+    }
+
+    // 事件委托 点击li标签
+    bgDiv.addEventListener("click", function (e) {
+        clearContent();
+      if (e.target.nodeName.toLowerCase() === 'li') {
+        var keywords = e.target.innerText;
+        searchInput.value = keywords;
+        currentlink=e.target.id;
+        jumpPage();
+      }
+      
+    }, false);
+
+    var i = 0;
+    var flag = 1;
+
+    // 事件委托 监听键盘事件
+    bgDiv.addEventListener("keydown", function (e) {
+      var size = searchResult.childNodes.length;
+      // 键盘向下事件
+      if (e.keyCode === 40) {
+        if (flag === 0) {
+          i = i + 2;
+        }
+        flag = 1;
+        e.preventDefault();
+        if (i >= size) {
+          i = 0;
+        }
+        if (i < size) {
+          searchInput.value = searchResult.childNodes[i++].innerText;
+          currentlink=searchResult.childNodes[i++].id;
+          i--;
+        }
+      };
+      // 键盘向上事件
+      if (e.keyCode === 38) {
+        if (flag === 1) {
+          i = i - 2;
+        }
+        flag = 0;
+        e.preventDefault();
+        if (i < 0) {
+          i = size - 1;
+        }
+        if (i > -1) {
+          searchInput.value = searchResult.childNodes[i--].innerText;
+          currentlink=searchResult.childNodes[i--].id;
+          i++;
+        }
+      };
+    }, false);
+
+    // 点击页面任何其他地方 搜索结果框消失
+
+    document.onclick = () => clearC()
+
+  </script>
 </br></br>
 <div align="center">
 <button class="btn btn-default btn-w-md" type="button" onclick="se()">搜索</button>
