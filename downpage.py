@@ -103,6 +103,7 @@ for x in sat:
         exit()
     if temp == None:
         bar.next
+        shutil.rmtree('downloadserver/'+str(x))
         continue
     final = temp.string
     for ash in soup.findAll(attrs={"class": "d_post_content"}):
@@ -117,7 +118,7 @@ for x in sat:
     k = k+1
 k = 1
 bar.finish
-print("页面下载完成1，开始处理writer")
+print("页面下载完成，开始处理writer")
 
 if(os.path.exists('./writer')):
     shutil.rmtree('./writer')
