@@ -145,8 +145,9 @@ for x in taglist:
         fhandle.write('<'+thisname+'>\n')
         fhandle.close()
     fhandle = open('./writer/'+thisname+'.html', 'a',encoding="utf-8")
+    thistag=x[2].replace("./tags","../tags")
     fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+x[0]+'">'+
-                x[1]+'</a></td>\n<td>'+x[2]+'</td><td><a href="writer/'+thisname+'.html">'+thisname+'</a></td>\n<td>'+str(x[4])+'</td>\n</tr>\n')
+                x[1]+'</a></td>\n<td>'+thistag+'</td><td><a href="writer/'+thisname+'.html">'+thisname+'</a></td>\n<td>'+str(x[4])+'</td>\n</tr>\n')
     fhandle.close()
     bar.next()
 print('\n Success!\n')
