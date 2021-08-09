@@ -12,34 +12,33 @@ swr = '''
 <script src="http://www.yydbxx.cn/res/jquery.min.js"></script>
 <script type="text/javascript">
 function se(){
-	var s=document.getElementById("eti").value;
-	if(s==''){
-	alert("不能为空");
-	returrn;	
-	}
-	
-	var sa=document.getElementById("ss").value;
-	if(sa=="0"){
-		window.location.href="./ri.php?ssid="+s;
-	}
-	if(sa=="1"){
-		window.location.href="./riauthor.php?ssid="+s;
-	}
-	if(sa=="2"){
-		window.location.href="./com.php?ssid="+s;
-	}
-if(sa=="3"){
-		window.location.href="./ritag.php?ssid="+s;
-	}
-}
-	
-	$(document).ready(function(){
+    var s=document.getElementById("eti").value;
+    if(s==''){
+    alert("不能为空");
+    returrn;
+    }
 
-	$('#eti').bind('keydown',function(event){  
-        	        if(event.keyCode == "13")      
-        	        {  
-		se();
-		}
+    var sa=document.getElementById("ss").value;
+    if(sa=="0"){
+        window.location.href="./ri.php?ssid="+s;
+    }
+    if(sa=="1"){
+        window.location.href="./riauthor.php?ssid="+s;
+    }
+    if(sa=="2"){
+        window.location.href="./com.php?ssid="+s;
+    }
+if(sa=="3"){
+        window.location.href="./ritag.php?ssid="+s;
+    }
+}
+
+    $(document).ready(function(){
+    $('#eti').bind('keydown',function(event){
+                    if(event.keyCode == "13")
+                    {
+        se();
+        }
 });
 });
 </script>
@@ -51,7 +50,7 @@ if(sa=="3"){
 <link href="css/materialdesignicons.min.css" rel="stylesheet">
 <link href="css/style.min.css" rel="stylesheet">
 <div align="center"> <h1>纯几何吧题目检索</h1></div>
-<div align="center" style="width:100%"><h4>更新于2020.7.25(v1.7)</h4>
+<div align="center" style="width:100%"><h4>更新于2021.8.8(v1.8)</h4>
 <div style="width:60%;float:left;">
 <input class="form-control" type="text" id="eti" name="example-text-input" placeholder="请输入搜索内容...">
 </div>
@@ -59,8 +58,8 @@ if(sa=="3"){
 <select class="form-control" id="ss" name="example-select" size="1">
                         <option value="0">按题目搜索</option>
                         <option value="1">按作者搜索</option>
-			<option value="2">按内容搜索</option>
-			<option value="3">按标签搜索</option>
+            <option value="2">按内容搜索</option>
+            <option value="3">按标签搜索</option>
 </select>
 </div>
 </div>
@@ -103,27 +102,30 @@ cookies = {
     'STOKEN': 'a40d55ef379d56900e4d7c417479b9b2bf9d09227ef2f85dbe49e1ebb9482609',
     'bdshare_firstime': '1628227231590',
     'BAIDUID_BFESS': '461218646534E0FDC31D373550706CF4:FG=1',
-    'Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628232398,1628232992,1628233921,1628340185',
+    'BAIDU_WISE_UID': 'wapp_1628407474377_286',
+    'showCardBeforeSign': '1',
+    'Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628407474,1628436338,1628436863,1628462678',
+    'USER_JUMP': '-1',
     'st_key_id': '17',
-    'wise_device': '0',
-    'st_data': 'a9712517b40ee61c2708af9db58f92239b830ae9420f01dfabe564675b8a1aceafd42accebcbead9f2a3be3e4fcf316910feddf116b73dc904f35b1d6024fd8c692a1c9c5a604c988dc1d9e44dafefbc3f2b1b7debdb4dadfe777a417b47fb8371653d3f04e05f201c523f4bd1badedd67561814ca92a7bd0ce9d1cfac82dd9d',
-    'st_sign': '16214376',
-    'ab_sr': '1.0.1_NWE1MzAxMzRkMWEyNmM3ZDQ0ODRlNjcyZTA4MGNkZDFmZTE1OGM0NzVkZTJhYTIwY2JhMDQ4ZGEzOWRhNGFhN2Y5MmJiOGEwNGRmN2Y4MzYwZGI3NTY1YzdkMWMwNDdkMGQ5MGVlNWQ1ZGNkMWE3OWI3NjExYThmNTcwZWUzNjBkMWM4ZWNhMmMxNmVkOTg5NzdkMDExZWRhMTU2ZDg0NA==',
-    'Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628340212',
+    'H_PS_PSSID': '34398_34333_34369_31660_34405_34004_34092_26350',
+    'delPer': '0',
+    'PSINO': '6',
+    'BA_HECTOR': 'ah018k0h85a40020or1gh0oog0r',
+    'ab_sr': '1.0.1_MjFhMmYyOGQ2YWU0MTg0NTI0NjA3YzI4OWY2ZjgzZGIyMWEwYzUxYjk1MGRjYTg1YmI2ZmJhZDU0ZWRmNjYzN2U0ZDQ0ZjgyYTY2OWZhNWI4MWEzNWFlMTZiMmJhZDBjOTM4NzA2OGNjMjQyZTA3YWIxZWEwYjY5MGYxYzU0OGNlYTI3MzBlY2NiMjJhYjQyZjhjOWVkZjVhMDM3OWVlNjY0NTI4NzM2OTQyNGE2YjA1ZjQ1ZDc1ZDgwM2FjOTM1',
+    'st_data': 'a9712517b40ee61c2708af9db58f92235ffaebff39ddbf6f0a5a0d019614fe4c6d954352aec1352589884507c091cca06ef2ab7831f4457b490a50910ca4f4aac46c4f70e39e2e0a3dbd3a0659ad51990da755b3afa27653bb67a1a108a8268a6026f264daf2ac719541796092004ac8bb043943e92a280016e9ae4f7b01f804716ca5a3b279ebb9913777805afc0dc6',
+    'st_sign': '929041ac',
+    'tb_as_data': 'f88f3dc9e487d651ec8f122c218a99998919e7454cf19eca0c69c80a508caa01c52d66bea45be75e4b06f591a924389a7cd7223c129696d093ad5a711a0cc817833f6e799ec9d049fc79a642652fc533dcc593ee4069d5845c45964b8d3016a1e9321e0385a588976a77c7881e10b541',
+    'Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628463966',
 }
-
-
 
 ktmp = 1
 while (ktmp == 1):
     try:
-        file = requests.get("http://tieba.baidu.com/f?kw=许氏数学")
+        file = requests.get("http://tieba.baidu.com/f?kw=纯几何",
+                            headers=headers, cookies=cookies)
         data = file.content.decode(encoding="utf-8", errors="ignore")
-        #print(data)
         ktmp = 0
     except Exception as e:
-        mydata = input()
-        cookies = ast.literal_eval(mydata)
         ktmp = 1
 reg = r'pn=(.*?)" class="last pagination-item " >尾页'
 ia = re.compile(reg)
@@ -135,34 +137,56 @@ print('总页数为：'+str(maxpage))
 k = 0
 list = []
 
-bar=Bar('Processing',max=maxpage/50+1,suffix='%(index)d/%(max)d - %(percent).2f%% - [%(elapsed)ds<%(eta)ds]')
-while k<=maxpage:
-	ktmp=1
-	while (ktmp==1):
-		try:
-			file=requests.get("http://tieba.baidu.com/f?kw=许氏数学&ie=utf-8&pn="+str(k))
-			data=file.content.decode(encoding="utf-8", errors="ignore")
-			ktmp=0
-		except Exception as e:
-			ktmp=1
-	reg=r'href="/p/(.+?)" title="(.+?)".*?j_th_tit[\s\S]*?主题作者: (.+?)"[\s\S]*?创建时间">(.+?)<'
-	ia=re.compile(reg)
-	sa=re.findall(ia,data)
-	list=list + sa
-	bar.next()
-	k=k+50
-list=sorted(list, key=lambda i:int(i[0]))
-fhandle=open('./pb.html','w',encoding='utf-8',errors='ignore')
+bar = Bar('Processing', max=maxpage/50+1,
+          suffix='%(index)d/%(max)d - %(percent).2f%% - [%(elapsed)ds<%(eta)ds]')
+while k <= maxpage:
+    ktmp = 1
+    while (ktmp == 1):
+        try:
+            file = requests.get("http://tieba.baidu.com/f?kw=纯几何&ie=utf-8&pn=" +
+                                str(k), headers=headers, cookies=cookies)
+            data = file.content.decode(encoding="utf-8", errors="ignore")
+            ktmp = 0
+        except Exception as e:
+            ktmp = 1
+    reg = r'href="/p/(.+?)" title="(.+?)".*?j_th_tit[\s\S]*?主题作者: (.+?)"[\s\S]*?创建时间">(.+?)<'
+    ia = re.compile(reg)
+    sa = re.findall(ia, data)
+    list = list + sa
+    bar.next()
+    k = k+50
+list = sorted(list, key=lambda i: int(i[0]))
+
+#判断新帖子
+
+
+fhandle = open('./pb.html', 'w', encoding='utf-8', errors='ignore')
 fhandle.write(swr)
+nhtml = requests.get(
+    "http://www.yydbxx.cn/t/pb.html").content.decode(encoding='utf-8', errors='ignore')
+
+reg = r'/p/(.*?)".*?</td>[\s\S][\s\S]<td>(\|.*?)</td>'
+ia = re.compile(reg)
+taglist = re.findall(ia, nhtml)
+
 for x in list:
-	fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(x[1])+'</a></td>\n<td></td><td>><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
+    fres = nhtml.find(str(x[0]), 0, len(nhtml))
+    if (fres != -1):
+        # 判断是否有tag
+        flag = 0
+        thistag = ''
+        for tag in taglist:
+            if tag[0] == str(x[0]):
+                flag = 1
+                thistag = tag[1]
+                break
+        if flag == 1:
+            # tag
+            fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(
+                x[1])+'</a></td>\n<td>'+thistag+'</td><td><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
+            continue
+    fhandle.write('<tr>\n<td><a href="http://tieba.baidu.com/p/'+str(x[0])+'">'+str(
+        x[1])+'</a></td>\n<td></td><td><a href="writer/'+str(x[2])+'.html">'+str(x[2])+'</a></td>\n<td>'+str(x[3])+'</td>\n</tr>\n')
 fhandle.write('</table>')
 fhandle.close()
 bar.finish
-'''
-<tr>
-<td><a href="http://tieba.baidu.com/p/6835689892">4478重发</a></td>
-<td></td><td><a href="writer/◆qzc◆.html">◆qzc◆</a></td>
-<td>7-24</td>
-</tr>
-'''
