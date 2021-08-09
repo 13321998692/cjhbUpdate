@@ -18,6 +18,7 @@ headers = {
     'Sec-Fetch-Dest': 'empty',
     'Accept-Language': 'zh-CN,zh;q=0.9',
 }
+
 swr = '''
 <!DOCTYPE html>
 <html lang="zh">
@@ -51,21 +52,17 @@ cookies = {
     'STOKEN': 'a40d55ef379d56900e4d7c417479b9b2bf9d09227ef2f85dbe49e1ebb9482609',
     'bdshare_firstime': '1628227231590',
     'BAIDUID_BFESS': '461218646534E0FDC31D373550706CF4:FG=1',
-    'BAIDU_WISE_UID': 'wapp_1628407474377_286',
-    'showCardBeforeSign': '1',
-    'Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628407474,1628436338,1628436863,1628462678',
-    'USER_JUMP': '-1',
+    'BAIDU_WISE_UID': 'wapp_1628498789907_927',
+    'Hm_lvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628498993,1628499684,1628501803,1628506111',
     'st_key_id': '17',
-    'H_PS_PSSID': '34398_34333_34369_31660_34405_34004_34092_26350',
-    'delPer': '0',
-    'PSINO': '6',
-    'BA_HECTOR': 'ah018k0h85a40020or1gh0oog0r',
-    'ab_sr': '1.0.1_MjFhMmYyOGQ2YWU0MTg0NTI0NjA3YzI4OWY2ZjgzZGIyMWEwYzUxYjk1MGRjYTg1YmI2ZmJhZDU0ZWRmNjYzN2U0ZDQ0ZjgyYTY2OWZhNWI4MWEzNWFlMTZiMmJhZDBjOTM4NzA2OGNjMjQyZTA3YWIxZWEwYjY5MGYxYzU0OGNlYTI3MzBlY2NiMjJhYjQyZjhjOWVkZjVhMDM3OWVlNjY0NTI4NzM2OTQyNGE2YjA1ZjQ1ZDc1ZDgwM2FjOTM1',
-    'st_data': 'a9712517b40ee61c2708af9db58f92235ffaebff39ddbf6f0a5a0d019614fe4c6d954352aec1352589884507c091cca06ef2ab7831f4457b490a50910ca4f4aac46c4f70e39e2e0a3dbd3a0659ad51990da755b3afa27653bb67a1a108a8268a6026f264daf2ac719541796092004ac8bb043943e92a280016e9ae4f7b01f804716ca5a3b279ebb9913777805afc0dc6',
-    'st_sign': '929041ac',
-    'tb_as_data': 'f88f3dc9e487d651ec8f122c218a99998919e7454cf19eca0c69c80a508caa01c52d66bea45be75e4b06f591a924389a7cd7223c129696d093ad5a711a0cc817833f6e799ec9d049fc79a642652fc533dcc593ee4069d5845c45964b8d3016a1e9321e0385a588976a77c7881e10b541',
-    'Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628463966',
+    'USER_JUMP': '-1',
+    'ab_sr': '1.0.1_MzRhY2ZiZmM3MzQ0ZDUyZjI5ODY0NTU1YzlkNjQzOGUzOWM4NTE5ZGRkYzNlMDU5ZTk4ZDk2ODJhMWI1MjEzMDMwMTUxMTViMjVmOWQ4ZTcxNDI5M2JhNDE0NzQ5OTJmNDNjOTUxOTYzZDRiNmNiNTBjY2NmOTY5ZjM3ODQ2YjUzNGJiYmMwOTdkMzgwMDI4ODYxM2U5NzEwOTBmNzExYmEyZDRkZDI0ZDBkMDMxOWE5NzYyNjM1NmMyMzU1YWZm',
+    'st_data': 'a9712517b40ee61c2708af9db58f92235ffaebff39ddbf6f0a5a0d019614fe4c6d954352aec1352589884507c091cca06ef2ab7831f4457b490a50910ca4f4aac46c4f70e39e2e0a3dbd3a0659ad51990da755b3afa27653bb67a1a108a8268a8c344f5f4067f83df88cae0f90136f53bb2664441c0229bdf65b8e1bc30212e00402f95c621ccf305dfd89808497a7c4',
+    'st_sign': 'e11a16c4',
+    'tb_as_data': 'f88f3dc9e487d651ec8f122c218a99998919e7454cf19eca0c69c80a508caa01c52d66bea45be75e4b06f591a924389a7cd7223c129696d093ad5a711a0cc817c30e0f01db06b94538a5e23cf69b39812e97726c0796033cb9f6393ca683d36cfae4c2042013bd9dd84a64e74d5ef231',
+    'Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628506122',
 }
+
 
 
 k = 1
@@ -109,8 +106,11 @@ for x in sat:
         continue
     final = temp.string
     for ash in soup.findAll(attrs={"class": "d_post_content"}):
-        if ash.string != None:
-            final += ash.string+" "
+        if ash.contents!=None:
+            result = re.sub(r'\<.*?\>', "",str(ash.contents))
+            result2 = re.sub(r' ', "",result)
+            result3 =re.sub(r',', "",result2)
+            final+=result3
     with open('downloadserver/'+str(x)+'/'+str(x)+'.html', "w", encoding="utf-8", errors="ignore") as f2:
         f2.write(final)
     bar.next()
