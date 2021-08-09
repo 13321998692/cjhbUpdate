@@ -109,7 +109,7 @@ if(sa=="3"){
             </ul>
         </div>
     </div>
-    <div style="width:30%;float:right;">
+    <div style="width:35%;float:right;">
         <select class="form-control" id="ss" name="example-select" size="1">
                                 <option value="0">按题目搜索</option>
                                 <option value="1">按作者搜索</option>
