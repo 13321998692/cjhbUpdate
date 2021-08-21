@@ -1,4 +1,5 @@
 #coding=utf-8
+
 import requests
 from progress.bar import Bar
 from bs4 import BeautifulSoup
@@ -47,19 +48,8 @@ cookies = {
     'Hm_lpvt_98b9d8c2fd6608d564bf2ac2ae642948': '1628463966',
 }
 
-file = requests.get("http://tieba.baidu.com/p/7380048505", headers=headers, cookies=cookies)
+file = requests.get("http://tieba.baidu.com/p/5994005239", headers=headers, cookies=cookies,timeout=10)
 data = file.content.decode(encoding="utf-8",errors="ignore")
-soup = BeautifulSoup(data, 'html.parser')
-temp = soup.find(attrs={"class": "core_title_txt"})
-final = temp.string
-for ash in soup.findAll(attrs={"class": "d_post_content"}):
-    if ash.contents!=None:
-        result = re.sub(r'\<.*?\>', "",str(ash.contents))
-        result2 = re.sub(r' ', "",result)
-        result3 =re.sub(r',', "",result2)
-        final+=result3
 
-mytxt=soup.get_text("\n",strip=True)
-mytxt = re.sub(r'^[\s\S]*?查看此楼', "",mytxt)
-with open('this.txt', "w", encoding="utf-8", errors="ignore") as f2:
-        f2.write(final)
+with open('this.html', "w", encoding="utf-8", errors="ignore") as f2:
+    f2.write(data)
